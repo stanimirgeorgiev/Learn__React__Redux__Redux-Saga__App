@@ -151,6 +151,16 @@ class SimpleTable extends React.Component {
         rowsPerPage: 5
       });
     }
+
+    if (userData.length > 0 && this.state.rows.length === 0) {
+      const rows = userData;
+
+      this.setState({
+        rows,
+        page: 0,
+        rowsPerPage: 5
+      });
+    }
   }
 
   render() {
