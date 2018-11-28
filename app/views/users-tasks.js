@@ -10,39 +10,17 @@ import CompleteFailedTasks from './components/complete-failed-tasks';
 
 import { styles } from './user-tasks-styles';
 
-import {todos, userData} from '../utils/mocked-data';
-
 class UsersTasks extends React.Component {
-  state = {
-    open: true,
-    selectedUserId: null,
-    todos,
-    userData
-  };
-
-  handleDrawerOpen = () => {
-    this.setState({ open: true });
-  };
-
-  handleDrawerClose = () => {
-    this.setState({ open: false });
-  };
-
   completeTask = (id) => {
-    const indexOfTask = this.state.todos.findIndex((task) => task.id === id);
-    this.state.todos[indexOfTask].completed = !this.state.todos[indexOfTask].completed;
-    this.setState({
-      todos: this.state.todos
-    })
+    const indexOfTask = this.props.todos.findIndex((task) => task.id === id);
+    this.props.completeUserTask(indexOfTask)
   }
 
   onUserClick = (item) => {
-    this.setState(() => {
-      return {selectedUserId: item.id}
-    });
+    this.props.clickOnUser(item.id);
   };
 
-  changeUserIdAndData = (selectedUserId, userData = userData) => () => this.setState({selectedUserId, userData})
+  changeUserIdAndData = (selectedUserId, userData = this.props.userData) => () => this.props.updateSelectedUserAndData(selectedUserId, userData)
 
   render() {
     const { classes } = this.props;
@@ -50,27 +28,29 @@ class UsersTasks extends React.Component {
     return (
       <div className={classes.root}>
         <NavBar
-          handleDrawerOpen={this.handleDrawerOpen}
+          handleDrawerOpen={this.props.openUserSection}
           classes={classes}
           changeUserIdAndData={this.changeUserIdAndData}
-          isOpened={this.state.open}
-          userData={this.state.userData}
+          isOpened={this.props.isOpened}
+          userData={this.props.userData}
         />
         <UsersSection
-          handleDrawerClose={this.handleDrawerClose}
+          handleDrawerClose={this.props.closeUserSection}
           classes={classes}
           onUserClick={this.onUserClick}
-          isOpened={this.state.open}
-          selectedUserId={this.state.selectedUserId}
-          userData={this.state.userData}
+          isOpened={this.props.isOpened}
+          selectedUserId={this.props.selectedUserId}
+          userData={this.props.userData}
         />
         <Dashboard
           classes={classes}
-          {...this.state}
+          todos={this.props.todos}
+          userData={this.props.userData}
+          selectedUserId={this.props.selectedUserId}
         />
         <CompleteFailedTasks
-          todos={this.state.todos}
-          selectedUserId={this.state.selectedUserId}
+          todos={this.props.todos}
+          selectedUserId={this.props.selectedUserId}
           completeTask={this.completeTask}
           classes={classes}
         />
