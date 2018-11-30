@@ -11,7 +11,7 @@ import Divider from '@material-ui/core/Divider';
 const CompleteFailedTasks = (props) => {
   const {todos, selectedUserId, completeTask} = props;
 
-  const userTasks = todos.filter((todo) => todo.userId === selectedUserId)
+  const userTasks = todos.filter((todo) => todo.userId === selectedUserId);
 
   const userElements = [];
   userTasks.forEach((item, index) => {
@@ -37,7 +37,7 @@ const CompleteFailedTasks = (props) => {
         classes={{
           paper: classNames(props.classes.drawerPaper, ''),
         }}
-        open={true}
+        open
         className={'rightDrawer'}
       >
         <Divider />
@@ -49,6 +49,6 @@ const CompleteFailedTasks = (props) => {
   } else {
     return null;
   }
-}
+};
 
 export default CompleteFailedTasks;

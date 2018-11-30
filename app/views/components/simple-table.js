@@ -32,7 +32,7 @@ class SimpleTable extends React.Component {
       rows: props.userData,
       page: 0,
       rowsPerPage: 5,
-    }
+    };
   }
 
   handleChangePage = (event, page) => {
@@ -90,7 +90,7 @@ class SimpleTable extends React.Component {
           })}
         </TableBody>
       </Table>
-    )
+    );
   };
 
   renderTUsers = (classes) => {
@@ -126,7 +126,7 @@ class SimpleTable extends React.Component {
           })}
         </TableBody>
       </Table>
-    )
+    );
   };
 
   componentDidUpdate(pevProps) {
@@ -154,7 +154,7 @@ class SimpleTable extends React.Component {
   }
 
   render() {
-    const {classes, selectedUserId} = this.props
+    const {classes, selectedUserId} = this.props;
     return (
       <Paper className={classes.root}>
         <Table className={classes.table}>

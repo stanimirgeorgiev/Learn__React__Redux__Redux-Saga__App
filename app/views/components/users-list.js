@@ -19,11 +19,11 @@ const UsersLists = (props) => {
           <ListItemIcon>
             <Avatar className={classes.avatar}>{item.name[0].toUpperCase()}</Avatar>
           </ListItemIcon>
-          <ListItemText primary={item.name} inset/>
+          <ListItemText primary={item.name} inset />
         </ListItem>
       </div>
     );
   });
-}
+};
 
 export default UsersLists;

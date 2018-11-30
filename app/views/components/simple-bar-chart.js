@@ -14,7 +14,7 @@ const SimpleBarChart = (props) => {
 
   const users = userData.map((user) => {
     return {id: user.id, name: user.name};
-  })
+  });
 
   let getCompletedData = users.map((user) => {
     return {
@@ -30,23 +30,23 @@ const SimpleBarChart = (props) => {
   });
 
   if (selectedUserId) {
-    getCompletedData = [getCompletedData[selectedUserId - 1]];
+    getCompletedData = [ getCompletedData[selectedUserId - 1] ];
   }
 
   return (
     // 99% per https://github.com/recharts/recharts/issues/172
     <ResponsiveContainer width="99%" height={370}>
       <BarChart data={getCompletedData}>
-        <XAxis name="Users" height={70} textAnchor={'end'} angle={-20} dataKey="Name" reversed allowDataOverflow/>
+        <XAxis name="Users" height={70} textAnchor={'end'} angle={-20} dataKey="Name" reversed allowDataOverflow />
         <YAxis />
         <CartesianGrid strokeDasharray="3 3" />
         <Tooltip />
         <Legend />
-        <Bar dataKey="Completed" fill="#82ca9d" barSize={30}/>
-        <Bar dataKey="Failed" fill="#8884d8" barSize={30}/>
+        <Bar dataKey="Completed" fill="#82ca9d" barSize={30} />
+        <Bar dataKey="Failed" fill="#8884d8" barSize={30} />
       </BarChart>
     </ResponsiveContainer>
   );
-}
+};
 
 export default SimpleBarChart;
