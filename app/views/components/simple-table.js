@@ -136,6 +136,16 @@ class SimpleTable extends React.Component {
   componentDidUpdate(pevProps) {
     const {selectedUserId, userData, todos} = this.props;
 
+    if (this.props.todos.length !== pevProps.todos.length) {
+      const rows = todos.filter((todo) => selectedUserId === todo.userId);
+
+      this.updatePage({
+        rows,
+        page: this.state.page,
+        rowsPerPage: this.state.rowsPerPage
+      });
+    }
+
     if (this.props.taskWasCompleted.id !== pevProps.taskWasCompleted.id) {
       const rows = todos.filter((todo) => selectedUserId === todo.userId);
 
