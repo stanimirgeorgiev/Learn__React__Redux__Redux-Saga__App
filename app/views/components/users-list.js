@@ -14,7 +14,7 @@ const UsersLists = (props) => {
 
   return userData.map((item, index) => {
     return (
-      <div key={index} onClick={onUsersListItemClick(item)}>
+      <div key={userData.length - index - 1} onClick={onUsersListItemClick(item)}>
         <ListItem button selected={selectedUserId === item.id}>
           <ListItemIcon>
             <Avatar className={classes.avatar}>{item.name[0].toUpperCase()}</Avatar>

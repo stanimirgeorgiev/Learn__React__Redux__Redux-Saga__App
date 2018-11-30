@@ -93,7 +93,7 @@ class SimpleTable extends React.Component {
     )
   };
 
-  renderTUsers = (classes) => {
+  renderUsers = (classes) => {
     const {rows, rowsPerPage, page} = this.state;
 
     return (
@@ -129,36 +129,50 @@ class SimpleTable extends React.Component {
     )
   };
 
+  updatePage(state) {
+    this.setState(state);
+  }
+
   componentDidUpdate(pevProps) {
     const {selectedUserId, userData, todos} = this.props;
+
+    if (this.props.taskWasCompleted.id !== pevProps.taskWasCompleted.id) {
+      const rows = todos.filter((todo) => selectedUserId === todo.userId);
+
+      this.updatePage({
+        rows,
+        page: this.state.page,
+        rowsPerPage: this.state.rowsPerPage
+      });
+    }
 
     if (selectedUserId && selectedUserId !== pevProps.selectedUserId) {
       const rows = todos.filter((todo) => selectedUserId === todo.userId);
 
-      this.setState({
+      this.updatePage({
         rows,
-        page: 0,
-        rowsPerPage: 5
+        page: this.state.page,
+        rowsPerPage: this.state.rowsPerPage
       });
     }
 
     if (!selectedUserId && selectedUserId !== pevProps.selectedUserId) {
       const rows = userData;
 
-      this.setState({
+      this.updatePage({
         rows,
-        page: 0,
-        rowsPerPage: 5
+        page: this.state.page,
+        rowsPerPage: this.state.rowsPerPage
       });
     }
 
     if (userData.length > 0 && this.state.rows.length === 0) {
       const rows = userData;
 
-      this.setState({
+      this.updatePage({
         rows,
-        page: 0,
-        rowsPerPage: 5
+        page: this.state.page,
+        rowsPerPage: this.state.rowsPerPage
       });
     }
   }
@@ -171,7 +185,7 @@ class SimpleTable extends React.Component {
           {this.pagination()}
         </Table>
         <div className={classes.tableWrapper}>
-          {selectedUserId ? this.renderTasksPerUser(classes) : this.renderTUsers(classes)}
+          {selectedUserId ? this.renderTasksPerUser(classes) : this.renderUsers(classes)}
         </div>
       </Paper>
     );
