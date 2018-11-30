@@ -1,5 +1,5 @@
-# Ignore various temporary directories
+# Ignore various temporary directories and files
 node_modules
 npm-debug.log
 .idea
-dist
+webapp
