@@ -72,7 +72,6 @@ module.exports = {
   resolve: {
     modules: [
       '.',
-      // path.resolve(ROOT, '../test', 'js'),
       path.resolve(ROOT, '../node_modules'),
     ]
   },

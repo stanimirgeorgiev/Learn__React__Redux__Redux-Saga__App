@@ -1,11 +1,10 @@
 {
   "name": "softuni",
   "version": "0.0.2",
-  "description": "Test React-Redux-Redux-Saga App",
+  "description": "Teach React Redux Saga",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --progress --color --config ./config/webpack.dev-server.js --watch",
-    "test": "test"
+    "start": "webpack-dev-server --progress --color --watch --config ./config/webpack.dev-server.js"
   },
   "repository": {
     "type": "git",
