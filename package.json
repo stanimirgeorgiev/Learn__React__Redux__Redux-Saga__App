@@ -5,6 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack serve --progress --color --config ./config/webpack.dev-server.js",
+    "lint": "npm run lint-js",
+    "lint-js": "eslint --ext .js .*.js *.js app",
+    "fix": "eslint --ext .js .*.js *.js app --fix",
     "test": "test"
   },
   "repository": {
@@ -40,7 +43,14 @@
     "react-redux": "latest",
     "react-redux-saga": "latest",
     "redux": "latest",
-    "redux-saga": "latest"
+    "redux-saga": "latest",
+        "eslint": "latest",
+    "eslint-loader": "latest",
+    "eslint-plugin-jsdoc": "latest",
+    "eslint-plugin-jsx-a11y": "latest",
+    "eslint-plugin-lodash": "latest",
+    "eslint-plugin-no-only-tests": "latest",
+    "eslint-plugin-react": "latest"
   },
   "devDependencies": {
     "prop-types": "latest",
